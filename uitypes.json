@@ -1,0 +1,899 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "#/uitypes.json",
+    "title": "Type Definitions",
+    "description": "Reusable UI types for data integration.",
+    "definitions": {
+        "guid": {
+            "domainDescription": "Globally unique identifier.",
+            "technicalDescription": "Decimal number in the range 0 - 9999999999999999999.",
+            "validationRule": " >= 0 and <= 9999999999999999999",
+            "type": "number"
+        },
+        "pidm": {
+            "domainDescription": "Internal identifier for an Identity from Banner",
+            "technicalDescription": "Decimal number in the range 0 - 99999999.",
+            "validationRule": ">= 0 and <= 99999999",
+            "type": "number"
+        },
+        "uin": {
+            "domainDescription": "University Identification Number",
+            "technicalDescription": "9-charater string which may have the form 6nnnnnnnn or @nnnnnnnn where n is a digit in [0...9].",
+            "validationRule": "like '[6@][0-9]{8}'",
+            "type": "string"
+        },
+        "firstName": {
+            "domainDescription": "First given name of a Person.",
+            "technicalDescription": "Variable length string having a maximum 60 characters.",
+            "type": "string"
+        },
+        "lastName": {
+            "domainDescription": "Last or family name of a Person.",
+            "technicalDescription": "Variable length string having a maximum 60 characters.",
+            "type": "string"
+        },
+        "middleName": {
+            "domainDescription": "Additional given name or names beyond the First Name of a Person.",
+            "technicalDescription": "Variable length string having a maximum 60 characters.",
+            "type": "string"
+        },
+        "termCode": {
+            "domainDescription": "Mnemonic abbreviation that identifies an Academic Term.",
+            "technicalDescription": "6-character string of the form nnnnnn where n is a digit in [0..9] and the 1st character is in [1,2,4] designating the UIUC, UIC, UIS campuses.  2nd - 5th characters are the 4 digit calendar year and the 6th character is the starting month of the semester.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVTERM.STVTERM_CODE",
+            "validationRule": "IN (SELECT STVTERM_CODE FROM SATURN.STVTERM)",
+            "type": "string"
+        },
+        "termDescription": {
+            "domainDescription": "Text description of an Academic Term calling out the applicable campus, year and semester.",
+            "technicalDescription": "Variable length string having a maximum 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVTERM.STVTERM_DESC",
+            "validationRule": "IN (SELECT STVTERM_DESC FROM SATURN.STVTERM)",
+            "type": "string"
+        },
+        "addressTypeCode": {
+            "domainDescription": "Mnemonic abbreviation that identifies an Address Type.",
+            "technicalDescription": "2-character string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVATYP.STVATYP_CODE",
+            "validationRule": "IN (SELECT STVATYP_CODE FROM SATURN.STVATYP)",
+            "type": "string"
+        },
+        "addressTypeDescription": {
+            "domainDescription": "Text description of an Address Type.",
+            "technicalDescription": "Variable length string having a maximum 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVATYP.STVATYP_DESC",
+            "validationRule": "IN (SELECT STVATYP_DESC FROM SATURN.STVATYP)",
+            "type": "string"
+        },
+        "sequenceNumber": {
+            "domainDescription": "Tiebreaker sequence number.",
+            "technicalDescription": "Integer.",
+            "type": "number"
+        },
+        "streetLine1": {
+            "domainDescription": "First street line of an Address.",
+            "technicalDescription": "Variable length string having a maximum 75 characters.",
+            "type": "string"
+        },
+        "streetLine2": {
+            "domainDescription": "Second street line of an Address.",
+            "technicalDescription": "Variable length string having a maximum 75 characters.",
+            "type": "string"
+        },
+        "streetLine3": {
+            "domainDescription": "Third street line of an Address.",
+            "technicalDescription": "Variable length string having a maximum 75 characters.",
+            "type": "string"
+        },
+        "city": {
+            "domainDescription": "Name of a City.",
+            "technicalDescription": "Variable length string having a maximum 50 characters.",
+            "type": "string"
+        },
+        "nationCode": {
+            "domainDescription": "Mnemonic code that identifies a Nation.",
+            "technicalDescription": "2-character string.",
+            "validationSystem": "BANPROD",
+            "valdiationDataElement": "SATURN.STVNATN.STVNATN_CODE",
+            "validationRule": "IN (SELECT STVNATN_CODE FROM SATURN.STVNATN)",
+            "type": "string"
+        },
+        "nationName": {
+            "domainDescription": "Name of the Nation.",
+            "technicalDescription": "Variable length string having a maximum 30 characters",
+            "validationSystem": "BANPROD",
+            "valdiationDataElement": "SATURN.STVNATN.STVNATN_NATION",
+            "validationRule": "IN (SELECT STVNATN_NATION FROM SATURN.STVNATN)",
+            "type": "string"
+        },
+        "postalCode": {
+            "domainDescription": "Postal service code for a location.",
+            "technicalDescription": "Variable length string having a maximum 10 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "GENERAL.GTVZIPC.GTVZIPC_CODE",
+            "validationRule": "IN (SELECT GTVZIPC_CODE FROM GENERAL.GTVZIPC_CODE)",
+            "type": "string"
+        },
+        "employeeStatusCode": {
+            "domainDescription": "Code for the employment status of an Employee.",
+            "technicalDescription": "1-character string.",
+            "validationRule": "IN ('A', 'B', 'L', 'F', 'P', 'T')",
+            "type": "string"
+        },
+        "employeeStatusDescription": {
+            "domainDescription": "Text description for the status of an Employee.",
+            "technicalDescription": "Variable length string having a maximum of 50 characters.",
+            "validationRule": "IN DECODE('A', 'Active', 'B', 'Leave without pay and with benefits.', 'L', 'Leave without pay and without benefits.', 'F', 'Leave with pay and with benefits.', 'P', 'Leave with partial pay and with benefits.', 'T', 'Terminated')",
+            "type": "string"
+        },
+        "administrativeCampusCode": {
+            "domainDescription": "Code for an Administrative Campus.",
+            "technicalDescription": "3-character string of the form n00 where n in [1|2|4].",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "CODEBOOK.T_CAMPUS.CAMPUS_CD",
+            "validationRule": "IN (SELECT CAMPUS_CD FROM CODEBOOK.T_CAMPUS)",
+            "type": "string"
+        },
+        "administrativeCampusName": {
+            "domainDescription": "Name for an Administrative Campus.",
+            "technicalDescription": "Variable length string having a maximum 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "CODEBOOK.T_CAMPUS.CAMPUS_NAME_30",
+            "validationRule": "IN (SELECT CAMPUS_NAME_30 FROM CODEBOOK.T_CAMPUS)",
+            "type": "string"
+        },
+        "advisorTypeCode": {
+            "domainDescription": "Code for an Academic Advisor Type.",
+            "technicalDescription": "4-character string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVADVR.STVADVR_CODE",
+            "validationRule": "IN (SELECT STVADVR_CODE FROM SATURN.STVADVR)",
+            "type": "string"
+        },
+        "advisorTypeDescription": {
+            "domainDescription": "Description of the Academic Advisor Type.",
+            "technicalDescription": "Variable length string having a maximum 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVADVR.STVADVR_DESC",
+            "validationRule": "IN (SELECT STVADVR_DESC FROM SATURN.STVADVR)",
+            "type": "string"
+        },
+        "areaCode": {
+            "domainDescription": "The area code portion of a US or Canadian telephone number.",
+            "technicalDescription": "3-digit numeric string.",
+            "type": "string"
+        },
+        "chartCode": {
+            "domainDescription": "Code for a finance ledger chart.",
+            "technicalDescription": "1-character string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "FIMSMGR.FTVCOAS.FTVCOAS_COAS_CODE",
+            "validationRule": "IN (SELECT FTVCOAS_COAS_CODE FROM FIMSMGR.FTVCOAS A WHERE (FTVCOAS_EFF_DATE, FTVCOAS_NCHG_DATE) = (SELECT MAX(B.FTVCOAS_EFF_DATE), MAX(B.FTVCOAS_NCHG_DATE) FROM FIMSMGR.FTVCOAS B WHERE A.FTVCOAS_COAS_CODE = B.FTVCOAS_COAS_CODE AND B.FTVCOAS_EFF_DATE <= SYSDATE AND B.FTVCOAS_NCHG_DATE <= SYSDATE)))",
+            "type": "string"
+        },
+        "chartDescription": {
+            "domainDescription": "Description of the finance ledger chart.",
+            "technicalDescription": "Variable length string having a maximum 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "FIMSMGR.FTVCOAS.FTVCOAS_TITLE",
+            "validationRule": "IN (SELECT FTVCOAS_TITLE FROM FIMSMGR.FTVCOAS A WHERE (FTVCOAS_EFF_DATE, FTVCOAS_NCHG_DATE) = (SELECT MAX(B.FTVCOAS_EFF_DATE), MAX(B.FTVCOAS_NCHG_DATE) FROM FIMSMGR.FTVCOAS B WHERE A.FTVCOAS_COAS_CODE = B.FTVCOAS_COAS_CODE AND B.FTVCOAS_EFF_DATE <= SYSDATE AND B.FTVCOAS_NCHG_DATE <= SYSDATE)))",
+            "type": "string"
+        },
+        "organizationCode": {
+            "domainDescription": "Code for a UI Administrative Subunit.",
+            "technicalDescription": "1-character string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "FIMSMGR.FTVORGN.FTVORGN_ORGN_CODE",
+            "validationRule": "IN (SELECT FTVORGN_ORGN_CODE FROM FIMSMGR.FTVORGN A WHERE (FTVORGN_EFF_DATE, FTVORGN_NCHG_DATE) = (SELECT MAX(B.FTVORGN_EFF_DATE), MAX(B.FTVORGN_NCHG_DATE) FROM FIMSMGR.FTVORGN B WHERE A.FTVORGN_ORGN_CODE = B.FTVORGN_ORGN_CODE AND B.FTVORGN_EFF_DATE <= SYSDATE AND B.FTVORGN_NCHG_DATE <= SYSDATE)))",
+            "type": "string"
+        },
+        "organizationDescription": {
+            "domainDescription": "Description of a UI Administrative Subunit.",
+            "technicalDescription": "Variable length string having a maximum 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "FIMSMGR.FTVORGN.FTVORGN_TITLE",
+            "validationRule": "IN (SELECT FTVORGN_TITLE FROM FIMSMGR.FTVORGN A WHERE (FTVORGN_EFF_DATE, FTVORGN_NCHG_DATE) = (SELECT MAX(B.FTVORGN_EFF_DATE), MAX(B.FTVORGN_NCHG_DATE) FROM FIMSMGR.FTVORGN B WHERE A.FTVORGN_ORGN_CODE = B.FTVORGN_ORGN_CODE AND B.FTVORGN_EFF_DATE <= SYSDATE AND B.FTVORGN_NCHG_DATE <= SYSDATE)))",
+            "type": "string"
+        },
+        "telephoneTypeCode": {
+            "domainDescription": "Code for a telephone usage type.",
+            "technicalDescription": "Variable length string having a maximum of 4 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVTELE.STVTELE_CODE",
+            "validationRule": "IN (SELECT STVTELE_CODE FROM SATURN.STVTELE)",
+            "type": "string"
+        },
+        "telephoneTypeDescription": {
+            "domainDescription": "Description of a telephone usage type.",
+            "technicalDescription": "Variable length string having a maximum 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVTELE.STVTELE_DESC",
+            "validationRule": "IN (SELECT STVTELE_DESC FROM SATURN.STVTELE)",
+            "type": "string"
+        },
+        "employeeClassCode": {
+            "domainDescription": "Code for an Employee Class.",
+            "technicalDescription": "2-character string composed of two capital letters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "PAYROLL.PTRECLS.PTRECLS_CODE",
+            "validationRule": "IN (SELECT PTRECLS_CODE FROM PAYROLL.PTRECLS)",
+            "type": "string"
+        },
+        "employeeClassDescription": {
+            "domainDescription": "Description of an Employee Class.",
+            "technicalDescription": "Variable length string having a maximum 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "PAYROLL.PTRECLS.PTRECLS_DESC",
+            "validationRule": "IN (SELECT PTRECLS_DESC FROM PAYROLL.PTRECLS)",
+            "type": "string"
+        },
+        "emailTypeCode": {
+            "domainDescription": "Code for an Email Class.",
+            "technicalDescription": "Variable length string having a maximum of 4 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "GENERAL.GTVEMAL.GTVEMAL_CODE",
+            "validationRule": "IN (SELECT PTRECLS_CODE FROM PAYROLL.PTRECLS)",
+            "type": "string"
+        },
+        "emailTypeDescription": {
+            "domainDescription": "Description of an Email Class.",
+            "technicalDescription": "Variable length string having a maximum 60 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "GENERAL.GTVEMAL.GTVEMAL_DESC",
+            "validationRule": "IN (SELECT PTRECLS_DESC FROM PAYROLL.PTRECLS)",
+            "type": "string"
+        },
+        "flag": {
+            "domainDescription": "True/false binary element.",
+            "technicalDescription": "1-character string.",
+            "validationRule": "IN ('Y','N')",
+            "type": "string",
+            "enum": [
+                "Y",
+                "N",
+                null
+            ]
+        },
+        "emailAddress": {
+            "domainDescription": "An email address.",
+            "technicalDescription": "Variable length string conforming to RFC 5322 addr-spec.",
+            "type": "string"
+        },
+        "stateCode": {
+            "domainDescription": "Code for a US State or Canadian province.",
+            "technicalDescription": "2-character string composed of two capital letters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVSTAT.STVSTAT_CODE",
+            "validationRule": "IN (SELECT STVSTAT_CODE FROM SATURN.STVSTAT)",
+            "type": "string"
+        },
+        "stateName": {
+            "domainDescription": "Name of a US State or Canadian Province.",
+            "technicalDescription": "Variable length string having a maximum 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVSTAT.STVSTAT_DESC",
+            "validationRule": "IN (SELECT STVSTAT_DESC FROM SATURN.STVSTAT)",
+            "type": "string"
+        },
+        "telephoneExtension": {
+            "domainDescription": "Extension number for an individual facility telephone.",
+            "technicalDescription": "Variable length string having a maximum 10 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.SPRTELE.SPRTELE_PHONE_EXT",
+            "validationRule": "IN (SELECT SPRTELE_PHONE_EXT FROM SATURN.SPRTELE)",
+            "type": "string"
+        },
+        "telephoneNumber": {
+            "domainDescription": "A telephone number.",
+            "technicalDescription": "Variable length string having a maximum 12 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.SPRTELE.SPRTELE_PHONE_NUMBER",
+            "validationRule": "IN (SELECT SPRTELE_PHONE_NUMBER FROM SATURN.SPRTELE)",
+            "type": "string"
+        },
+        "payrollYear": {
+            "domainDescription": "A year in the life of payroll.",
+            "technicalDescription": "4 character numeric string of the form nnnn representing a year.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "PAYROLL.PTRCALN.PTRCALN_YEAR",
+            "validationRule": "IN (SELECT DISTINCT PTRCALN_YEAR FROM PAYROLL.PTRCALN",
+            "type": "string"
+        },
+        "payrollNumber": {
+            "domainDescription": "The nth payroll event or period of a payroll type in a payroll year.",
+            "technicalDescription": "Integer in the range of 1..12 for monthly and 1..26 for biweekly pay periods. Represented as a two digit decimal number.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "PAYROLL.PTRCALN.PTRCALN_PAYNO",
+            "validationRule": "IN (SELECT DISTINCT PTRCALN_PAYNO FROM PAYROLL.PTRCALN",
+            "type": "string"
+        },
+        "payPeriodCode": {
+            "domainDescription": "Mnemonic code for a pay period.",
+            "technicalDescription": "2 character string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "PAYROLL.PTRPICT.PTRPICT_CODE",
+            "validationRule": "IN (SELECT PTRPICT_CODE FROM PAYROLL.PTRPICT)",
+            "type": "string"
+        },
+        "payPeriodDescription": {
+            "domainDescription": "Text description of a pay period.",
+            "technicalDescription": "30 character variable length string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "PAYROLL.PTRPICT.PTRPICT_DESC",
+            "validationRule": "IN (SELECT PTRPICT_DESC FROM PAYROLL.PTRPICT)",
+            "type": "string"
+        },
+        "positionCode": {
+            "domainDescription": "Code that identifies an employment position.",
+            "technicalDescription": "30 character variable length string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "POSNCTL.NBBPOSN.NBBPOSN_POSN",
+            "validationRule": "IN (SELECT NBBPOSN_POSN FROM POSNCTL.NBBPOSN)",
+            "type": "string"
+        },
+        "positionTitle": {
+            "domainDescription": "Text title of a position.",
+            "technicalDescription": "30 character variable length string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "POSNCTL.NBBPOSN.NBBPOSN_TITLE",
+            "validationRule": "IN (SELECT NBBPOSN_TITLE FROM POSNCTL.NBBPOSN)",
+            "type": "string"
+        },
+        "jobSuffix": {
+            "domainDescription": "Suffix of a job.",
+            "technicalDescription": "2 character string.",
+            "masterSystem": "BANPROD",
+            "masterDataElement": "POSNCTL.NBRJOBS.NBRJOBS_SUFF",
+            "type": "string"
+        },
+        "jobDefaultHours": {
+            "domainDescription": "Number of hours defaulted during initial time extract.",
+            "technicalDescription": "Non-negative decimal number nnnn.nn.",
+            "masterSystem": "BANPROD",
+            "masterDataElement": "PAYROLL.PEREARN.PEREARN_DEFAULT_HRS",
+            "type": "string"
+        },
+        "timesheetApprovalCategory": {
+            "domainDescription": "Time/leave approval category of the timesheet entry.",
+            "technicalDescription": "Variable length string having a maximum of 6 characters.",
+            "masterSystem": "BANPROD",
+            "masterDataElement": "PAYROLL.PERJOBS.PERJOBS_ACAT_CODE",
+            "validationRule": "IN ('TIME','LEAVE')",
+            "type": "string"
+        },
+        "leaveCategoryCode": {
+            "domainDescription": "Code for a leave category.",
+            "technicalDescription": "2 character string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "PAYROLL.PTVLCAT.PTVLCAT_CODE",
+            "validationRule": "IN (SELECT PTVLCAT_CODE FROM PAYROLL.PTVLCAT)",
+            "type": "string"
+        },
+        "leaveCategoryDescription": {
+            "domainDescription": "Text description of a leave category.",
+            "technicalDescription": "30 character variable length string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "PAYROLL.PTVLCAT.PTVLCAT_DESC",
+            "validationRule": "IN (SELECT PTVLCAT_DESC FROM PAYROLL.PTVLCAT)",
+            "type": "string"
+        },
+        "timeEntryActionCode": {
+            "domainDescription": "Code for a timesheet action.",
+            "technicalDescription": "1 character string.",
+            "masterDataElement": "PAYROLL.PERJOBS.PERJOBS_ACTION_IND",
+            "validationSystem": "BANPROD",
+            "validationRule": "IN ('T','R')",
+            "type": "string"
+        },
+        "timeEntryActionDescription": {
+            "domainDescription": "Description of a timesheet action.",
+            "technicalDescription": "1 character string.",
+            "masterDataElement": "PAYROLL.PERJOBS.PERJOBS_ACTION_IND",
+            "validationSystem": "BANPROD",
+            "validationRule": "IN (CASE <timeEntryActionCode> WHEN 'T' THEN 'Report Time' WHEN 'R' THEN 'Request Leave')",
+            "type": "string"
+        },
+        "timeEntryStatusCode": {
+            "domainDescription": "Code for a timesheet action.",
+            "technicalDescription": "1 character string.",
+            "validationDataElement": "",
+            "validationSystem": "BANPROD",
+            "validationRule": "IN ('R', 'P', 'I', 'Y', 'C', 'A', 'E')",
+            "type": "string"
+        },
+        "timeEntryStatusDescription": {
+            "domainDescription": "Code for a timesheet action.",
+            "technicalDescription": "Variable length string.",
+            "validationRule": "IN PEKTECM.F_GET_DESC('TRANSACTION_STATUS', <timeEntryStatusCode>)",
+            "type": "string"
+        },
+        "timeEntryMethodCode": {
+            "domainDescription": "Code for a time entry method.",
+            "technicalDescription": "1 character string.",
+            "masterDataElement": "PAYROLL.PERJOBS.PERJOBS_TIME_ENTRY_METHOD",
+            "masterSystem": "BANPROD",
+            "validationRule": "IN ('P','W','D','T')",
+            "type": "string"
+        },
+        "timeEntryMethodDescription": {
+            "domainDescription": "Description of a time entry method.",
+            "technicalDescription": "Variable length string.",
+            "masterDataElement": "PAYROLL.PERJOBS.PERJOBS_ACTION_IND",
+            "masterSystem": "BANPROD",
+            "validationRule": "IN (CASE <timeEntryMethodCode> WHEN 'P' THEN 'Payroll' WHEN 'W' THEN 'Web' WHEN 'D' THEN 'Departmental' WHEN 'T' THEN 'Third Party')",
+            "type": "string"
+        },
+        "timeEntryTypeCode": {
+            "domainDescription": "Code for a Time Entry Type.",
+            "technicalDescription": "1 character string.",
+            "masterDataElement": "PAYROLL.PERJOBS.PERJOBS_TIME_ENTRY_TYPE",
+            "validationSystem": "BANPROD",
+            "validationRule": "IN ('T','E')",
+            "type": "string"
+        },
+        "timeEntryTypeDescription": {
+            "domainDescription": "Description of a timesheet action.",
+            "technicalDescription": "Variable length string.",
+            "masterDataElement": "PAYROLL.PERJOBS.PERJOBS_TIME_ENTRY_TYPE",
+            "validationSystem": "BANPROD",
+            "validationRule": "IN (CASE <timeEntryTypeCode> WHEN 'T' THEN 'Time Sheet' WHEN 'E' THEN 'Exception Time Only')",
+            "type": "string"
+        },
+        "earningsTypeCode": {
+            "domainDescription": "Code for an Earnings Type.",
+            "technicalDescription": "3 character string.",
+            "masterDataElement": "PAYROLL.PTREARN.PTREARN_CODE",
+            "validationSystem": "BANPROD",
+            "validationRule": "IN (SELECT PTREARN_CODE FORM PAYROLL.PTREARN)",
+            "type": "string"
+        },
+        "earningsTypeDescription": {
+            "domainDescription": "Description of an Earnings Type.",
+            "technicalDescription": "1 character string.",
+            "validationDataElement": "PAYROLL.PTREARN.PTREARN_LONG_DESC",
+            "validationSystem": "BANPROD",
+            "validationRule": "IN (SELECT PTREARN_LONG_DESC FORM PAYROLL.PTREARN)",
+            "type": "string"
+        },
+        "specialRate": {
+            "domainDescription": "Special earnings rate applied to the timesheet entry and earnings type.",
+            "technicalDescription": "Decimal number with two places right of the decimal point.",
+            "masterDataElement": "PAYROLL.PEREARN.PEREARN_SPECIAL_RATE",
+            "masterSystem": "BANPROD",
+            "type": "number"
+        },
+        "timeEntryDate": {
+            "domainDescription": "Date on which hours were entered for a timesheet entry and earnings type.",
+            "technicalDescription": "A date.",
+            "masterDataElement": "PAYROLL.PERHOUR.PERHOUR_TIME_ENTRY_DATE",
+            "masterSystem": "BANPROD",
+            "type": "string"
+        },
+        "timeEntryHours": {
+            "domainDescription": "Number of hours entered for a timesheet entry and earning type.",
+            "technicalDescription": "Decimal number with two places right of the decimal point.",
+            "masterDataElement": "PAYROLL.PERHOUR.PERHOUR_HRS",
+            "masterSystem": "BANPROD",
+            "type": "number"
+        },
+        "jobDescription": {
+            "domainDescription": "Title of an Employee Job which supplements the Position Title.",
+            "technicalDescription": "Variable length string.",
+            "masterDataElement": "POSNCTL.NBRJOBS.NBRJOBS_DESC",
+            "masterSystem": "BANPROD",
+            "type": "string"
+        },
+        "jobEffectiveDate": {
+            "domainDescription": "Effective date of an employee job.",
+            "technicalDescription": "Date.",
+            "masterDataElement": "POSNCTL.NBRJOBS.NBRJOBS_EFFECTIVE_DATE",
+            "masterSystem": "BANPROD",
+            "type": "string"
+        },
+        "payPeriodStartDate": {
+            "domainDescription": "Date of the start of the Pay Period.",
+            "technicalDescription": "Date.",
+            "masterDataElement": "PAYROLL.PTRCALN.PTRCALN_START_DATE",
+            "masterSystem": "BANPROD",
+            "type": "string"
+        },
+        "payPeriodEndDate": {
+            "domainDescription": "Date of the end of the Pay Period.",
+            "technicalDescription": "Date.",
+            "masterDataElement": "PAYROLL.PTRCALN.PTRCALN_END_DATE",
+            "masterSystem": "BANPROD",
+            "type": "string"
+        },
+        "payEventCheckDate": {
+            "domainDescription": "Date on payroll checks written for the Pay Period.",
+            "technicalDescription": "Date.",
+            "masterDataElement": "PAYROLL.PTRCALN.PTRCALN_CHECK_DATE",
+            "masterSystem": "BANPROD",
+            "type": "string"
+        },
+        "timeEntryStartDate": {
+            "domainDescription": "First date on which time may be entered for the Pay Period.",
+            "technicalDescription": "Date.",
+            "masterDataElement": "PAYROLL.PTRCALN.PTRCALN_TIME_ENTRY_START_DATE",
+            "masterSystem": "BANPROD",
+            "type": "string"
+        },
+        "payPeriodEmployeeWebViewCutoffDate": {
+            "domainDescription": "Date until which the Employee has access to view on the web information for the Pay Period.",
+            "technicalDescription": "Date.",
+            "masterDataElement": "PAYROLL.PTRCALN.PTRCALN_WEB_VIEW_CUTOFF_DATE",
+            "masterSystem": "BANPROD",
+            "type": "string"
+        },
+        "payPeriodApproverWebViewCutoffDate": {
+            "domainDescription": "Date until which an Employee who approves the time entry has access to view on the web information for the Pay Period.",
+            "technicalDescription": "Date.",
+            "masterDataElement": "PAYROLL.PTRCALN.PTRCALN_APR_WEB_CUTOFF_DATE",
+            "masterSystem": "BANPROD",
+            "type": "string"
+        },
+        "timeEntryEndDate": {
+            "domainDescription": "Last date on which time may be entered for the Pay Period.",
+            "technicalDescription": "Date.",
+            "masterDataElement": "PAYROLL.PTRCALN.PTRCALN_TIME_ENTRY_END_DATE",
+            "masterSystem": "BANPROD",
+            "type": "string"
+        },
+        "timeEntryCutoffTime": {
+            "domainDescription": "Time of day on the Time Entry End Date beyond which time may no longer be entered for the pay period.",
+            "technicalDescription": "4 character string representing a time in 24 hour hhmm format.",
+            "masterDataElement": "PAYROLL.PTRCALN.PTRCALN_TIME_ENTRY_CUTOFF_TIME",
+            "masterSystem": "BANPROD",
+            "type": "string"
+        },
+        "shift": {
+            "domainDescription": "Daily time period for a job.",
+            "technicalDescription": "1 character user-defined string.",
+            "type": "string"
+        },
+        "socialRelationshipCode": {
+            "domainDescription": "Code for a social relationship between two Persons.",
+            "technicalDescription": "1 character string.",
+            "validationDataElement": "SATURN.STVRELT.STVRELT_CODE",
+            "validationSystem": "BANPROD",
+            "validationRule": "IN (SELECT STVRELT_CODE FROM SATURN.STVRELT)",
+            "type": "string"
+        },
+        "socialRelationshipDescription": {
+            "domainDescription": "Text description of a social relationship between two Persons.",
+            "technicalDescription": "30-character variable length string.",
+            "validationDataElement": "SATURN.STVRELT.STVRELT_DESC",
+            "validationSystem": "BANPROD",
+            "validationRule": "IN (SELECT STVRELT_DESC FROM SATURN.STVRELT)",
+            "type": "string"
+        },
+        "prioritySequenceNumber": {
+            "domainDescription": "A sequence number denoting the priority of an associated object.",
+            "technicalDescription": "A positive integer.",
+            "type": "number"
+        },
+        "telephoneCountryCode": {
+            "domainDescription": "A decimal number prefixing a Telephone Number that directs the call to a Country/Nation.",
+            "technicalDescription": "1 - 3 digit decimal number",
+            "type": "number"
+        },
+        "registrationStatusCode": {
+            "domainDescription": "Code for the status of an Academic Course Registration.",
+            "technicalDescription": "2-character string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVRSTS.STVRSTS_CODE",
+            "validationRule": "IN (SELECT STVRSTS_CODE FROM SATURN.STVRSTS)",
+            "type": "string"
+        },
+        "registrationStatusDescription": {
+            "domainDescription": "Text description of a status of an Academic Course Registration.",
+            "technicalDescription": "Variable-length string having a maximum of 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVRSTS.STVRSTS_DESC",
+            "validationRule": "IN (SELECT STVRSTS_DESC FROM SATURN.STVRSTS)",
+            "type": "string"
+        },
+        "gradingModeCode": {
+            "domainDescription": "Code for the Grading Mode.",
+            "technicalDescription": "1-character string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVGMOD.STVRGMOD_CODE",
+            "validationRule": "IN (SELECT STVGMOD_CODE FROM SATURN.STVGMOD)",
+            "type": "string"
+        },
+        "gradingModeDescription": {
+            "domainDescription": "Text description of the Grading Mode.",
+            "technicalDescription": "Variable-length string having a maximum of 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVGMOD.STVGMOD_DESC",
+            "validationRule": "IN (SELECT STVGMOD_DESC FROM SATURN.STVGMOD)",
+            "type": "string"
+        },
+        "courseReferenceNumber": {
+            "domainDescription": "Unique reference number for a section of a course.",
+            "technicalDescription": "5-digit numeric string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVGMOD.STVGMOD_DESC",
+            "validationRule": "IN (SELECT STVGMOD_DESC FROM SATURN.STVGMOD)",
+            "type": "string"
+        },
+        "courseSubjectCode": {
+            "domainDescription": "Abbreviation for the subject area of the course.",
+            "technicalDescription": "Variable-length string having a maximum of 4 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVSUBJ.STVSUBJ_CODE",
+            "validationRule": "IN (SELECT STVSUBJ_CODE FROM SATURN.STVSUBJ)",
+            "type": "string"
+        },
+        "courseNumber": {
+            "domainDescription": "Abbreviation for the subject area of the course.",
+            "technicalDescription": "Variable-length string having a maximum of 4 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVSUBJ.STVSUBJ_CODE",
+            "validationRule": "IN (SELECT STVSUBJ_CODE FROM SATURN.STVSUBJ)",
+            "type": "string"
+        },
+        "courseScheduleTypeCode": {
+            "domainDescription": "Code that identifies a Course Schedule Type.",
+            "technicalDescription": "Variable length string composed of upper case alpha and numeric characters having up to 3 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVSCHD.STVSCHD_CODE",
+            "validationRule": "IN (SELECT STVSCHD_CODE FROM SATURN.STVSCHD)",
+            "type": "string"
+        },
+        "courseScheduleTypeDescription": {
+            "domainDescription": "Text description of a Course Schedule Type.",
+            "technicalDescription": "Variable length string composed of upper case alpha and numeric characters having up to 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVSCHD.STVSCHD_DESC",
+            "validationRule": "IN (SELECT STVSCHD_DESC FROM SATURN.STVSCHD)",
+            "type": "string"
+        },
+        "buildingCode": {
+            "domainDescription": "Code that identifies a UI Building.",
+            "technicalDescription": "Variable length string composed of upper case alpha and numeric characters having up to 4 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVBLDG.STVBLDG_CODE",
+            "validationRule": "IN (SELECT STVBLDG_CODE FROM SATURN.STVBLDG)",
+            "type": "string"
+        },
+        "buildingDescription": {
+            "domainDescription": "Text description of a UI Building.",
+            "technicalDescription": "Variable length string composed of upper case alpha and numeric characters having up to 30 characters.",
+            "validationSystem": "FAMISPROD",
+            "validationDataElement": "FAMIS.FAMIS_BUILDING.DESCRIPTION",
+            "validationRule": "IN (SELECT DESCRIPTION FROM FAMIS.FAMIS_BUILDING)",
+            "type": "string"
+        },
+        "roomCode": {
+            "domainDescription": "Code that identifies a room in a UI Building.",
+            "technicalDescription": "Variable length string composed of upper case alpha and numeric characters having up to 6 characters.",
+            "validationSystem": "",
+            "validationDataElement": "",
+            "validationRule": "",
+            "type": "string"
+        },
+        "partOfTermCode": {
+            "domainDescription": "Code that identifies an academic Part of Term.",
+            "technicalDescription": "Variable length string composed of upper case alpha and numeric characters having up to 3 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVPTRM.STVPTRM_CODE",
+            "validationRule": "IN (SELECT STVPTRM_CODE FROM SATURN.STVPTRM)",
+            "type": "string"
+        },
+        "partOfTermDescription": {
+            "domainDescription": "Text description of an academic Part of Term.",
+            "technicalDescription": "Variable length string composed of upper case alpha and numeric characters having up to 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVPTRM.STVPTRM_DESC",
+            "validationRule": "IN (SELECT STVPTRM_DESC FROM SATURN.STVPTRM)",
+            "type": "string"
+        },
+        "scheduleTypeCode": {
+            "domainDescription": "Code that identifies a course schedule type.",
+            "technicalDescription": "Variable length string composed of upper case alpha and numeric characters having up to 3 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVPTRM.STVSCHD_CODE",
+            "validationRule": "IN (SELECT STVSCHD_CODE FROM SATURN.STVSCHD)",
+            "type": "string"
+        },
+        "scheduleTypeDescription": {
+            "domainDescription": "Text description of a course schedule type.",
+            "technicalDescription": "Variable length string composed of upper case alpha and numeric characters having up to 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "SATURN.STVPTRM.STVSCHD_DESC",
+            "validationRule": "IN (SELECT STVSCHD_DESC FROM SATURN.STVSCHD)",
+            "type": "string"
+        },
+        "netId": {
+            "domainDescription": "A UI NetId which can be associated with an Identity.",
+            "technicalDescription": "Variable length string composed of upper and lower case alpha and numeric characters having up to 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "",
+            "validationRule": "",
+            "type": "string"
+        },
+        "udcId": {
+            "domainDescription": "A UI UDC Id which can be associated with an Identity.",
+            "technicalDescription": "",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "",
+            "validationRule": "",
+            "type": "string"
+        },
+        "credentialType": {
+            "domainDescription": "A type of credential which may be granted to an Identity.",
+            "technicalDescription": "",
+            "validationSystem": "",
+            "validationDataElement": "",
+            "validationRule": "",
+            "type": "string"
+        },
+        "credentialValue": {
+            "domainDescription": "The value of a credential which has been granted to an Identity.",
+            "technicalDescription": "",
+            "validationSystem": "",
+            "validationDataElement": "",
+            "validationRule": "",
+            "type": "string"
+        },
+        "institutionalRoleCode": {
+            "domainDescription": "Code that identifies an Institutional Role.",
+            "technicalDescription": "",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "GENERAL.GTVSQRL.GTVSQRL_CODE",
+            "validationRule": "IN (SELECT GTVSQRL_CODE FROM GENERAL.GTVSQRL)",
+            "type": "string"
+        },
+        "institutionalRoleDescription": {
+            "domainDescription": "Description of an Institutional Role.",
+            "technicalDescription": "",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "GENERAL.GTVSQRL.GTVSQRL_DESC",
+            "validationRule": "IN (SELECT GTVSQRL_DESC FROM GENERAL.GTVSQRL)",
+            "type": "string"
+        },
+        "accountingElementType": {
+            "domainDescription": "A type of financial accounting element as found in an accounting string.",
+            "technicalDescription": "",
+            "validationRule": "IN ('Fund', 'Organization', 'Account', 'Program', 'Activity', 'Location')",
+            "type": "string"
+        },
+        "fundCode": {
+            "domainDescription": "Code for a finance Fund.",
+            "technicalDescription": "6-character string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "FIMSMGR.FTVFUND.FTVFUND_FUND_CODE",
+            "validationRule": "IN (SELECT FTVFUND_FUND_CODE FROM FIMSMGR.FTVFUND A WHERE (FTVFUND_EFF_DATE, FTVFUND_NCHG_DATE) = (SELECT MAX(B.FTVFUND_EFF_DATE), MAX(B.FTVFUND_NCHG_DATE) FROM FIMSMGR.FTVFUND B WHERE A.FTVFUND_FUND_CODE = B.FTVFUND_FUND_CODE AND B.FTVFUND_EFF_DATE <= SYSDATE AND B.FTVFUND_NCHG_DATE <= SYSDATE)))",
+            "type": "string"
+        },
+        "fundDescription": {
+            "domainDescription": "Description a finance Fund.",
+            "technicalDescription": "Variable length string of up to 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "FIMSMGR.FTVFUND.FTVFUND_FUND_DESC",
+            "validationRule": "IN (SELECT FTVFUND_FUND_DESC FROM FIMSMGR.FTVFUND A WHERE (FTVFUND_EFF_DATE, FTVFUND_NCHG_DATE) = (SELECT MAX(B.FTVFUND_EFF_DATE), MAX(B.FTVFUND_NCHG_DATE) FROM FIMSMGR.FTVFUND B WHERE A.FTVFUND_FUND_DESC = B.FTVFUND_FUND_DESC AND B.FTVFUND_EFF_DATE <= SYSDATE AND B.FTVFUND_NCHG_DATE <= SYSDATE)))",
+            "type": "string"
+        },
+        "accountCode": {
+            "domainDescription": "Code for a finance Account.",
+            "technicalDescription": "6-character string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "FIMSMGR.FTVACCT.FTVACCT_ACCT_CODE",
+            "validationRule": "IN (SELECT FTVACCT_ACCT_CODE FROM FIMSMGR.FTVACCT A WHERE (FTVACCT_EFF_DATE, FTVACCT_NCHG_DATE) = (SELECT MAX(B.FTVACCT_EFF_DATE), MAX(B.FTVACCT_NCHG_DATE) FROM FIMSMGR.FTVACCT B WHERE A.FTVACCT_ACCT_CODE = B.FTVACCT_ACCT_CODE AND B.FTVACCT_EFF_DATE <= SYSDATE AND B.FTVACCT_NCHG_DATE <= SYSDATE)))",
+            "type": "string"
+        },
+        "accountDescription": {
+            "domainDescription": "Description a finance Account.",
+            "technicalDescription": "Variable length string of up to 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "FIMSMGR.FTVACCT.FTVACCT_ACCT_DESC",
+            "validationRule": "IN (SELECT FTVACCT_ACCT_DESC FROM FIMSMGR.FTVACCT A WHERE (FTVACCT_EFF_DATE, FTVACCT_NCHG_DATE) = (SELECT MAX(B.FTVACCT_EFF_DATE), MAX(B.FTVACCT_NCHG_DATE) FROM FIMSMGR.FTVACCT B WHERE A.FTVACCT_ACCT_DESC = B.FTVACCT_ACCT_DESC AND B.FTVACCT_EFF_DATE <= SYSDATE AND B.FTVACCT_NCHG_DATE <= SYSDATE)))",
+            "type": "string"
+        },
+        "programCode": {
+            "domainDescription": "Code for a finance Program.",
+            "technicalDescription": "6-character string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "FIMSMGR.FTVPROG.FTVPROG_PROG_CODE",
+            "validationRule": "IN (SELECT FTVPROG_PROG_CODE FROM FIMSMGR.FTVPROG A WHERE (FTVPROG_EFF_DATE, FTVPROG_NCHG_DATE) = (SELECT MAX(B.FTVPROG_EFF_DATE), MAX(B.FTVPROG_NCHG_DATE) FROM FIMSMGR.FTVPROG B WHERE A.FTVPROG_PROG_CODE = B.FTVPROG_PROG_CODE AND B.FTVPROG_EFF_DATE <= SYSDATE AND B.FTVPROG_NCHG_DATE <= SYSDATE)))",
+            "type": "string"
+        },
+        "programDescription": {
+            "domainDescription": "Description a finance Program.",
+            "technicalDescription": "Variable length string of up to 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "FIMSMGR.FTVPROG.FTVPROG_PROG_DESC",
+            "validationRule": "IN (SELECT FTVPROG_PROG_DESC FROM FIMSMGR.FTVPROG A WHERE (FTVPROG_EFF_DATE, FTVPROG_NCHG_DATE) = (SELECT MAX(B.FTVPROG_EFF_DATE), MAX(B.FTVPROG_NCHG_DATE) FROM FIMSMGR.FTVPROG B WHERE A.FTVPROG_PROG_DESC = B.FTVPROG_PROG_DESC AND B.FTVPROG_EFF_DATE <= SYSDATE AND B.FTVPROG_NCHG_DATE <= SYSDATE)))",
+            "type": "string"
+        },
+        "activityCode": {
+            "domainDescription": "Code for a finance Activity.",
+            "technicalDescription": "6-character string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "FIMSMGR.FTVACTV.FTVACTV_ACTV_CODE",
+            "validationRule": "IN (SELECT FTVACTV_ACTV_CODE FROM FIMSMGR.FTVACTV A WHERE (FTVACTV_EFF_DATE, FTVACTV_NCHG_DATE) = (SELECT MAX(B.FTVACTV_EFF_DATE), MAX(B.FTVACTV_NCHG_DATE) FROM FIMSMGR.FTVACTV B WHERE A.FTVACTV_ACTV_CODE = B.FTVACTV_ACTV_CODE AND B.FTVACTV_EFF_DATE <= SYSDATE AND B.FTVACTV_NCHG_DATE <= SYSDATE)))",
+            "type": "string"
+        },
+        "activityDescription": {
+            "domainDescription": "Description a finance Activity.",
+            "technicalDescription": "Variable length string of up to 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "FIMSMGR.FTVACTV.FTVACTV_ACTV_DESC",
+            "validationRule": "IN (SELECT FTVACTV_ACTV_DESC FROM FIMSMGR.FTVACTV A WHERE (FTVACTV_EFF_DATE, FTVACTV_NCHG_DATE) = (SELECT MAX(B.FTVACTV_EFF_DATE), MAX(B.FTVACTV_NCHG_DATE) FROM FIMSMGR.FTVACTV B WHERE A.FTVACTV_ACTV_DESC = B.FTVACTV_ACTV_DESC AND B.FTVACTV_EFF_DATE <= SYSDATE AND B.FTVACTV_NCHG_DATE <= SYSDATE)))",
+            "type": "string"
+        },
+        "locationCode": {
+            "domainDescription": "Code for a finance Location.",
+            "technicalDescription": "6-character string.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "FIMSMGR.FTVLOCN.FTVLOCN_LOCN_CODE",
+            "validationRule": "IN (SELECT FTVLOCN_LOCN_CODE FROM FIMSMGR.FTVLOCN A WHERE (FTVLOCN_EFF_DATE, FTVLOCN_NCHG_DATE) = (SELECT MAX(B.FTVLOCN_EFF_DATE), MAX(B.FTVLOCN_NCHG_DATE) FROM FIMSMGR.FTVLOCN B WHERE A.FTVLOCN_LOCN_CODE = B.FTVLOCN_LOCN_CODE AND B.FTVLOCN_EFF_DATE <= SYSDATE AND B.FTVLOCN_NCHG_DATE <= SYSDATE)))",
+            "type": "string"
+        },
+        "locationDescription": {
+            "domainDescription": "Description a finance Fund.",
+            "technicalDescription": "Variable length string of up to 30 characters.",
+            "validationSystem": "BANPROD",
+            "validationDataElement": "FIMSMGR.FTVLOCN.FTVLOCN_LOCN_DESC",
+            "validationRule": "IN (SELECT FTVLOCN_LOCN_DESC FROM FIMSMGR.FTVLOCN A WHERE (FTVLOCN_EFF_DATE, FTVLOCN_NCHG_DATE) = (SELECT MAX(B.FTVLOCN_EFF_DATE), MAX(B.FTVLOCN_NCHG_DATE) FROM FIMSMGR.FTVLOCN B WHERE A.FTVLOCN_LOCN_DESC = B.FTVLOCN_LOCN_DESC AND B.FTVLOCN_EFF_DATE <= SYSDATE AND B.FTVLOCN_NCHG_DATE <= SYSDATE)))",
+            "type": "string"
+        },
+        "activityDate": {
+            "domainDescription": "Date of the last row activity.",
+            "type": "string"
+        },
+        "effectiveDate": {
+            "domainDescription": "Date that a set of data elements becomes effective.",
+            "type": "string"
+        },
+        "nextChangeDate": {
+            "domainDescription": "Date that a set of data elements is planned to change.",
+            "type": "string"
+        },
+        "terminateDate": {
+            "domainDescription": "Date that a set of data elements is planned to terminate active status.",
+            "type": "string"
+        },
+        "effectiveStatus": {
+            "domainDescription": "Effective status of the data record",
+            "type": "string"
+        },
+        "financeElementType": {
+            "domainDescription": "An element of a finance accounting string.",
+            "type": "string"
+        },
+        "eventAction": {
+            "domainDescription": "The Create/Update/Delete action on a data element.",
+            "type": "string"
+        },
+        "eventDate": {
+            "domainDescription": "The date and time of a data event.",
+            "type": "string"
+        },
+        "eventId": {
+            "domainDescription": "The identifier of a data event.",
+            "type": "string"
+        },
+        "objectName": {
+            "domainDescription": "The name of a data object.",
+            "type": "string"
+        },
+        "objectVersion": {
+            "domainDescription": "The version sequence number of a data object.",
+            "type": "number"
+        },
+        "applicationName": {
+            "domainDescription": "The name of an application.",
+            "type": "string"
+        },
+        "dataStoreName": {
+            "domainDescription": "The name of a data store.",
+            "type": "string"
+        }
+    }
+}
