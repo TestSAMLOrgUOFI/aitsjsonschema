@@ -1,18 +1,18 @@
 {
-"$schema": "http://json-schema.org/draft-07/schema#",
-"$id": "#/DataElementEvent.json",
-"title": "Data Element Event",
-"description": "",
-"type": "object",
-"properties": {
-"AccountingElement": {
-"$ref": "uientities.json#/definitions/ValidAccountingElement"
-},
-"OrganizationPredecessor": {
-"$ref": "uientities.json#/definitions/AdministrativeOrganization"
-},
-"EventMetaData": {
-"$ref": "uientities.json#/definitions/EventMetadata"
-}
-}
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "#/DataElementEvent.json",
+    "title": "Data Element Event",
+    "description": "",
+    "type": "object",
+    "properties": {
+        "AccountingElement": {
+            "$ref": "uientities.json#/definitions/ValidAccountingElement"
+        },
+        "OrganizationPredecessor": {
+            "$ref": "uientities.json#/definitions/AdministrativeOrganization"
+        },
+        "EventMetaData": {
+            "$ref": "uientities.json#/definitions/EventMetadata"
+        }
+    }
 }
