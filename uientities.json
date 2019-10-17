@@ -1,0 +1,1016 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "#/uientities.json",
+    "title": "Entity Definitions",
+    "description": "Reuseable UI entities for data integration.",
+    "definitions": {
+        "Person": {
+            "description": "Core attributes that describe a Natural Person type of Identity",
+            "type": "object",
+            "properties": {
+                "guid": {
+                    "attributeDescription": "Globally unique ID of the Person Identity.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRIDEN.SPRIDEN_SURROGATE_ID",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/guid"
+                },
+                "pidm": {
+                    "attributeDescription": "Banner PIDM of the Person.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRIDEN.SPRIDEN_PIDM",
+                    "dataSteward": "uitypes.json#/definitions/pidm",
+                    "$ref": "uitypes.json#/definitions/pidm"
+                },
+                "uin": {
+                    "attributeDescription": "UIN of the Person.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRIDEN.SPRIDEN_ID",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/uin"
+                },
+                "firstName": {
+                    "attributeDescription": "First given name of the Person.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRIDEN.SPRIDEN_FIRST_NAME",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/firstName"
+                },
+                "lastName": {
+                    "attributeDescription": "Family or last name of the Person.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRIDEN.SPRIDEN_LAST_NAME",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/lastName"
+                },
+                "middleName": {
+                    "attributeDescription": "Additional given name or name of the person.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRIDEN.SPRIDEN_MI",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/middleName"
+                }
+            }
+        },
+        "AcademicTerm": {
+            "description": "An academic period defined by a campus, year and semester.",
+            "EDMEntity": "Valid Term",
+            "type": "object",
+            "properties": {
+                "termCode": {
+                    "attributeDescription": "Code the the Academic Term.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.STVTERM.STVTERM_CODE",
+                    "dataSteward": "",
+                    "EDMEntity": "Valid Term",
+                    "EDMAttribute": "Term Code",
+                    "$ref": "uitypes.json#/definitions/termCode"
+                },
+                "termDescription": {
+                    "attributeDescription": "Description of the Academic Term.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.STVTERM.STVTERM_DESC",
+                    "dataSteward": "",
+                    "EDMEntity": "Valid Term",
+                    "EDMAttribute": "Term Description",
+                    "$ref": "uitypes.json#/definitions/termDescription"
+                }
+            }
+        },
+        "Address": {
+            "description": "A physical location as having a postal designation.",
+            "type": "object",
+            "properties": {
+                "streetLine1": {
+                    "attributeDescription": "First line of the Address street.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRADDR.SPRADDR_STREET_LINE1",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/streetLine1"
+                },
+                "streetLine2": {
+                    "attributeDescription": "Second line of the Address street.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRADDR.SPRADDR_STREET_LINE2",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/streetLine1"
+                },
+                "streetLine3": {
+                    "attributeDescription": "Third line of the Address street.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRADDR.SPRADDR_STREET_LINE3",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/streetLine1"
+                },
+                "city": {
+                    "attributeDescription": "Address city.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRADDR.SPRADDR_STREET_CITY",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/city"
+                },
+                "postalCode": {
+                    "attributeDescription": "Address postal code.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRADDR.SPRADDR_ZIP",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/postalCode"
+                },
+                "Nation": {
+                    "attributeDescription": "Address nation.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.STVNATN",
+                    "dataSteward": "",
+                    "$ref": "#/definitions/Nation"
+                }
+            }
+        },
+        "AddressType": {
+            "description": "A usage category of Address.",
+            "type": "object",
+            "properties": {
+                "addressTypeCode": {
+                    "attributeDescription": "Code for the Address Type.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.STVATYP.STVATYP_CODE",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/addressTypeCode"
+                },
+                "addressTypeDescription": {
+                    "attributeDescription": "Description of the Address Type.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.STVATYP.STVATYP_DESC",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/addressTypeDescription"
+                }
+            }
+        },
+        "Nation": {
+            "description": "A sovereign national entity.",
+            "type": "object",
+            "properties": {
+                "nationCode": {
+                    "attributeDescription": "Code for the Nation.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.STVNATN.STVNATN_CODE",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/nationCode"
+                },
+                "nationName": {
+                    "attributeDescription": "Name of the Nation.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.STVNATN.STVNATN_NATION",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/nationName"
+                }
+            }
+        },
+        "TelephoneType": {
+            "description": "A telephone usage type.",
+            "type": "object",
+            "properties": {
+                "telephoneTypeCode": {
+                    "attributeDescription": "Code for the Telephone Type.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.STVTELE.STVTELE_CODE",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/telephoneTypeCode"
+                },
+                "telephoneTypeDescription": {
+                    "attributeDescription": "Description of the Telephone Type.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.STVTELE.STVTELE_DESC",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/telephoneTypeDescription"
+                }
+            }
+        },
+        "ValidChartOfAccounts": {
+            "description": "A finance chart of account.",
+            "type": "object",
+            "properties": {
+                "chartOfAccountsCode": {
+                    "attributeDescription": "Code for the Chart of Accounts.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "FIMSMGR.FTVCOAS.FTVCOAS_COAS_CODE",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/telephoneTypeCode"
+                },
+                "chartOfAccountsDescription": {
+                    "attributeDescription": "Description of the Chart of Accounts.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "FIMSMGR.FTVCOAS.FTVCOAS_TITLE",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/telephoneTypeDescription"
+                }
+            }
+        },
+        "ValidAdministrativeCampus": {
+            "description": "",
+            "type": "object",
+            "properties": {
+                "administrativeCampusCode": {
+                    "attributeDescription": "Code for the Administrative Campus.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "FIMSMGR.FTVCOAS.FTVCOAS_COAS_CODE",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/administrativeCampusCode"
+                },
+                "administrativeCampusDescription": {
+                    "attributeDescription": "Description of the Administrative Campus.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "FIMSMGR.FTVCOAS.FTVCOAS_TITLE",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/administrativeCampusDescription"
+                }
+            }
+        },
+        "AdministrativeOrganization": {
+            "description": "A UI Administrative Subunit",
+            "type": "object",
+            "properties": {
+                "organizationCode": {
+                    "attributeDescription": "Code for the Administrative Organization.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "FIMSMGR.FTVORGN.FTVORGN_ORGN_CODE",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/organizationCode"
+                },
+                "organizationDescription": {
+                    "attributeDescription": "Description of the Administrative Organization.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "FIMSMGR.FTVORGN.FTVORGN_TITLE",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/organizationDescription"
+                },
+                "chartOfAccountsCode": {
+                    "attributeDescription": "Code for the Chart of Accounts.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "FIMSMGR.FTVCOAS.FTVCOAS_COAS_CODE",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/chartCode"
+                },
+                "chartOfAccountsDescription": {
+                    "attributeDescription": "Description of the Chart of Accounts.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "FIMSMGR.FTVCOAS.FTVCOAS_TITLE",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/chartDescription"
+                }
+            }
+        },
+        "ValidEmployeeClass": {
+            "description": "A type classification of Employee.",
+            "type": "object",
+            "properties": {
+                "employeeClassCode": {
+                    "attributeDescription": "Code for the Employee Class.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "PAYROLL.PTRECLS.PTRECLS_CODE",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/employeeClassCode"
+                },
+                "employeeClassDescription": {
+                    "attributeDescription": "Description of the Employee Class.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "PAYROLL.PTRECLS.PTRECLS_DESC",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/employeeClassDescription"
+                }
+            }
+        },
+        "EmailType": {
+            "description": "A usage classification of email address for a user.",
+            "type": "object",
+            "properties": {
+                "emailTypeCode": {
+                    "attributeDescription": "Code for the Email Type.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "GENERAL.GTVEMAL.GTVEMAL_CODE",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/emailTypeCode"
+                },
+                "emailTypeDescription": {
+                    "attributeDescription": "Description of the Email Type.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "GENERAL.GTVEMAL.GTVEMAL_DESC",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/emailTypeDescription"
+                }
+            }
+        },
+        "IdentityEmail": {
+            "description": "An Email Address associated with an Identity.",
+            "type": "object",
+            "properties": {
+                "EmailType": {
+                    "attributeDescription": "Usage type of the Identity Email Address.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "GENERAL.GOREMAL.GOREMAL_EMAL_CODE",
+                    "dataSteward": "",
+                    "$ref": "#/definitions/ValidEmailType"
+                },
+                "emailAddress": {
+                    "attributeDescription": "The email address of the Identity",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "GENERAL.GOREMAL.GOREMAL_EMAIL_ADDRESS",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/emailAddress"
+                },
+                "emailStatusFlag": {
+                    "attributeDescription": "True if the email is active.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "GENERAL.GOREMAL.GOREMAL_STATUS_IND",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/flag"
+                },
+                "preferredEmailFlag": {
+                    "attributeDescription": "True if the email address is the one the Identity prefers for communication.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "GENERAL.GOREMAL.GOREMAL_PREFERRED_IND",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/flag"
+                }
+            }
+        },
+        "Telephone": {
+            "description": "A Telephone.",
+            "type": "object",
+            "properties": {
+                "telephoneExtension": {
+                    "attributeDescription": "Extension number of the Identity Telephone.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRTELE.SPRTELE_PHONE_EXT",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/telephoneExtension"
+                },
+                "telephoneNumber": {
+                    "attributeDescription": "Main number of the Identity Telephone.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRTELE.SPRTELE_PHONE_NUMBER",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/telephoneNumber"
+                },
+                "areaCode": {
+                    "attributeDescription": "North American area code of the Identity Telephone.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRTELE.SPRTELE_PHONE_AREA",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/areaCode"
+                },
+                "telephoneStatusFlag": {
+                    "attributeDescription": "Active/Inactive status flag of the Identity Telephone.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRTELE.SPRTELE_STATUS_IND",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/flag"
+                },
+                "telephonePrimaryFlag": {
+                    "attributeDescription": "Primary telephone flag of the Identity Telephone.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRTELE.SPRTELE_PRIMARY_IND",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/flag"
+                }
+            }
+        },
+        "Employee": {
+            "description": "A person who has an employment relation with the UI.",
+            "type": "object",
+            "properties": {
+                "Person": {
+                    "attributeDescription": "Banner PIDM of the Employee.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "PAYROLL.PEBEMPL.PEBEMPL_PIDM",
+                    "dataSteward": "<>",
+                    "$ref": "#/definitions/Person"
+                },
+                "EmployeeStatus": {
+                    "attributeDescription": "The employment status of the Employee.",
+                    "type": "object",
+                    "properties": {
+                        "employeeStatusCode": {
+                            "attributeDescription": "Code for the Employee Status",
+                            "$ref": "uitypes#/definitions/employeeStatusCode"
+                        },
+                        "employeeStatusDescription": {
+                            "attributeDescription": "Text description of the Employee Status.",
+                            "$ref": "uitypes#/definitions/employeeStatusDescription"
+                        }
+                    }
+                },
+                "EmployeeHomeOrganization": {
+                    "attributeDescription": "Home Organization of the Employee.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "PAYROLL.PEBEMPL",
+                    "dataSteward": "<>",
+                    "$ref": "#/definitions/ValidAdministrativeOrganization"
+                },
+                "EmployeeClass": {
+                    "attributeDescription": "Classification of the Employee.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "PAYROLL.PEBEMPL.PEBEMPL_ECLS_CODE",
+                    "dataSteward": "<>",
+                    "$ref": "#/definitions/ValidEmployeeClass"
+                },
+                "JobAssignment": {
+                    "attributeDescription": "A Job Assigned to the Employee.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "POSNCTL.NBRJOBS",
+                    "dataSteward": "<>",
+                    "$ref": "#/definitions/JobAssignment",
+                    "type": "array"
+                }
+            }
+        },
+        "StudentAdvisorType": {
+            "description": "A functional classification of the Student Advisor role.",
+            "type": "object",
+            "properties": {
+                "advisorTypeCode": {
+                    "attributeDescription": "Code for the Student Advisor Type.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.STVADVR.STVADVR_CODE",
+                    "dataSteward": "<>",
+                    "$ref": "uitypes.json#/definitions/advisorTypeCode"
+                },
+                "advisorTypeDescription": {
+                    "attributeDescription": "Description of the Student Advisor Type.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.STVADVR.STVADVR_DESC",
+                    "dataSteward": "<>",
+                    "$ref": "uitypes.json#/definitions/advisorTypeDescription"
+                }
+            }
+        },
+        "Student": {
+            "description": "A Person who has enrolled in a course of study.",
+            "type": "object",
+            "properties": {
+                "Person": {
+                    "description": "Person Identity of the Student",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPBPERS",
+                    "dataSteward": "<>",
+                    "$ref": "#/definitions/Person"
+                }
+            }
+        },
+        "IdentityTelephone": {
+            "description": "A telephone associated with an Identity.",
+            "type": "object",
+            "properties": {
+                "Telephone": {
+                    "attributeDescription": "A Telephone..",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRTELE",
+                    "dataSteward": "",
+                    "$ref": "#/definitions/Telephone"
+                },
+                "TelephoneType": {
+                    "attributeDescription": "Usage type of the Identity Telephone.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRTELE.SPRTELE_TELE_CODE",
+                    "dataSteward": "",
+                    "$ref": "#/definitions/ValidTelephoneType"
+                },
+                "sequenceNumber": {
+                    "attributeDescription": "Tiebreaker sequence number that allows an Identity to have multiple Telephones of the same type.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRTELE.SPRTELE_SEQNO",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/sequenceNumber"
+                }
+            }
+        },
+        "IdentityAddress": {
+            "description": "An Address associated with an Identity.",
+            "type": "object",
+            "properties": {
+                "Address": {
+                    "attributeDescription": "An address.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRADDR",
+                    "dataSteward": "",
+                    "$ref": "#/definitions/Address"
+                },
+                "AddressType": {
+                    "attributeDescription": "Usage type of the Identity Address.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRTELE.SPRADDR_ADDR_CODE",
+                    "dataSteward": "",
+                    "$ref": "#/definitions/ValidAddressType"
+                },
+                "sequenceNumber": {
+                    "attributeDescription": "Tiebreaker sequence number that allows an Identity to have multiple Addressess of the same type.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.SPRTELE.SPRADDR_SEQNO",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/sequenceNumber"
+                }
+            }
+        },
+        "ValidAcademicAdvisorType": {
+            "description": "An functional type of Academic Advisor.",
+            "type": "object",
+            "properties": {
+                "advisorTypeCode": {
+                    "attributeDescription": "Code the the Academic Advisor Type.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.STVADVR.STVADVR_CODE",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/advisorTypeCode"
+                },
+                "advisorTypeDescription": {
+                    "attributeDescription": "Description of the Academic Advisor Type.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "SATURN.STVADVR.STVADVR_DESC",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/advisorTypeDescription"
+                }
+            }
+        },
+        "ValidPayrollEarningsType": {
+            "description": "A type of payroll earnings.",
+            "type": "object",
+            "properties": {
+                "earningsTypeCode": {
+                    "attributeDescription": "Code that identifies the Earnings Type.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/earningsTypeCode"
+                },
+                "earningsTypeDescription": {
+                    "attributeDescription": "Description of the Earnings Type.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/earningsTypeDescription"
+                }
+            }
+        },
+        "ValidTimeEntryType": {
+            "description": "Regular versus exception entry type of timesheet entry.",
+            "type": "object",
+            "properties": {
+                "timeEntryTypeCode": {
+                    "attributeDescription": "Code that identifies the Entry Type.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/timeEntryTypeCode"
+                },
+                "timeEntryTypeDescription": {
+                    "attributeDescription": "Description of the Entry Type.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/timeEntryTypeDescription"
+                }
+            }
+        },
+        "ValidTimeEntryMethod": {
+            "description": "Method used to make a timesheet entry.",
+            "type": "object",
+            "properties": {
+                "timeEntryMethodCode": {
+                    "attributeDescription": "Code that identifies the Entry Method.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/timeEntryMethodCode"
+                },
+                "timeEntryMethodDescription": {
+                    "attributeDescription": "Description of the Entry Method.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/timeEntryMethodDescription"
+                }
+            }
+        },
+        "ValidTimeEntryStatus": {
+            "description": "Processing status of a timesheet entry.",
+            "type": "object",
+            "properties": {
+                "timeEntryStatusCode": {
+                    "attributeDescription": "Code that identifies the Timesheet Entry Status.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/timeEntryStatusCode"
+                },
+                "timeEntryMethodDescription": {
+                    "attributeDescription": "Description of the Timesheet Entry Status.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/timeEntryStatusDescription"
+                }
+            }
+        },
+        "TimeEntryAction": {
+            "description": "Report time versus request leave action type of timesheet entry.",
+            "type": "object",
+            "properties": {
+                "timeEntryStatusCode": {
+                    "attributeDescription": "Code that identifies the Timesheet Entry Action.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/timeEntryActionCode"
+                },
+                "timeEntryMethodDescription": {
+                    "attributeDescription": "Description of the Timesheet Entry Action.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/timeEntryActionDescription"
+                }
+            }
+        },
+        "ValidLeaveCategory": {
+            "description": "A leave of absence category.",
+            "type": "object",
+            "properties": {
+                "timeEntryStatusCode": {
+                    "attributeDescription": "Code that identifies the Leave Category.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/leaveCategoryCode"
+                },
+                "timeEntryMethodDescription": {
+                    "attributeDescription": "Description of the Leave Category.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/leaveCategoryDescription"
+                }
+            }
+        },
+        "PayPeriod": {
+            "description": "A repeating time interval between pay events.",
+            "type": "object",
+            "properties": {
+                "payPeriodCode": {
+                    "attributeDescription": "Code that identifies the Pay Period.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/payPeriodCode"
+                },
+                "payPeriodDescription": {
+                    "attributeDescription": "Description of the Pay Period.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/payPeriodDescription"
+                }
+            }
+        },
+        "ValidEarningsType": {
+            "description": "A type of earnings for an Employee.",
+            "type": "object",
+            "properties": {
+                "payrollPeriodCode": {
+                    "attributeDescription": "Code that identifies the Earnings Type.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/earningsTypeCode"
+                },
+                "payrollPeriodDescription": {
+                    "attributeDescription": "Description of the Earnings Type.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/earningsTypeDescription"
+                }
+            }
+        },
+        "TimesheetOrganization": {
+            "description": "The organization used for a job timesheet.",
+            "type": "object",
+            "properties": {
+                "ValidChartOfAccounts": {
+                    "attributeDescription": "Chart of accounts for the Timesheet Organization.",
+                    "dataSteward": "",
+                    "$ref": "#/definitions/ValidChartOfAccounts"
+                },
+                "ValidAdministrativeOrganization": {
+                    "attributeDescription": "Organization for the Timesheet.",
+                    "dataSteward": "",
+                    "$ref": "#/definitions/ValidAdministrativeOrganization"
+                }
+            }
+        },
+        "JobAssignment": {
+            "description": "A Position assigned to an Employee.",
+            "type": "object",
+            "properties": {
+                "pidm": {
+                    "attributeDescription": "The Banner PIDM of the Employee.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/pidm"
+                },
+                "positionCode": {
+                    "attributeDescription": "Code for the Position assigned to the Employee.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/positionCode"
+                },
+                "jobSuffix": {
+                    "attributeDescription": "Code for the Position assigned to the Employee.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/jobSuffix"
+                },
+                "TimesheetOrganization": {
+                    "attributeDescription": "Timesheet organization for the Job.",
+                    "dataSteward": "",
+                    "$ref": "#/definitions/TimesheetOrganization"
+                },
+                "jobDescription": {
+                    "attributeDescription": "Timesheet organization for the Job.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/jobDescription"
+                },
+                "jobDefaultHours": {
+                    "attributeDescription": "Number of hours defaulted during initial time extract.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/jobDefaultHours"
+                },
+                "JobTimesheetEntry": {
+                    "attributeDescription": "Timesheet organization for the Job.",
+                    "dataSteward": "",
+                    "$ref": "#/definitions/TimesheetOrganization",
+                    "type": "array"
+                }
+            }
+        },
+        "JobTimesheetEntry": {
+            "description": "A Timesheet Entry associated with a Job.",
+            "type": "object",
+            "properties": {
+                "pidm": {
+                    "attributeDescription": "The Banner PIDM of the Employee.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/pidm"
+                },
+                "positionCode": {
+                    "attributeDescription": "Code for the Position assigned to the Employee.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/positionCode"
+                },
+                "jobSuffix": {
+                    "attributeDescription": "Code for the Position assigned to the Employee.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/jobSuffix"
+                },
+                "payrollYear": {
+                    "attributeDescription": "A year in the life of payroll.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/payrollYear"
+                },
+                "payPeriod": {
+                    "attributeDescription": "Pay Period within which the Timesheet Entry falls.",
+                    "dataSteward": "",
+                    "$ref": "#/definitions/ValidPayPeriod"
+                },
+                "payrollNumber": {
+                    "attributeDescription": "The sequence of the pay period within the payroll year.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/payrollNumber"
+                },
+                "specialRate": {
+                    "attributeDescription": "Special earnings rate applied to the timesheet entry and earnings type.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/specialRate"
+                },
+                "EarningsType": {
+                    "attributeDescription": "The Earnings Type of the Timesheet Entry.",
+                    "dataSteward": "",
+                    "$ref": "#/definitions/ValidEarningsType"
+                },
+                "timeEntryDate": {
+                    "attributeDescription": "Date of the time entry.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/timeEntryDate"
+                },
+                "jobEffectiveDate": {
+                    "attributeDescription": "Effective date of the Job.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/jobEffectiveDate"
+                },
+                "TimeEntryType": {
+                    "attributeDescription": "The Time Entry Type of the Timesheet Entry.",
+                    "dataSteward": "",
+                    "$ref": "#/definitions/ValidTimeEntryType"
+                },
+                "TimeEntryMethod": {
+                    "attributeDescription": "The Time Entry Method of the Timesheet Entry.",
+                    "dataSteward": "",
+                    "$ref": "#/definitions/ValidTimeEntryMethod"
+                },
+                "TimeEntryStatus": {
+                    "attributeDescription": "The Time Entry Status of the Timesheet Entry.",
+                    "dataSteward": "",
+                    "$ref": "#/definitions/ValidTimeEntryStatus"
+                },
+                "TimeEntryAction": {
+                    "attributeDescription": "The Time Entry Action of the Timesheet Entry.",
+                    "dataSteward": "",
+                    "$ref": "#/definitions/ValidTimeEntryAction"
+                },
+                "LeaveCategory": {
+                    "attributeDescription": "The Leave Category of the Timesheet Entry if the Entry Action is 'Leave Request'.",
+                    "dataSteward": "",
+                    "$ref": "#/definitions/ValidLeaveCategory"
+                },
+                "timeEntryHours": {
+                    "attributeDescription": "Number of hours in the timesheet entry.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/timeEntryHours"
+                },
+                "timesheetApprovalCategory": {
+                    "attributeDescription": "Time/leave approval category of the timesheet entry.",
+                    "dataSteward": "",
+                    "$ref": "uitypes.json#/definitions/timesheetApprovalCategory"
+                }
+            }
+        },
+        "PayEvent": {
+            "description": "A Timesheet Entry associated with a Job.",
+            "type": "object",
+            "properties": {
+                "payrollYear": {
+                    "$ref": "uitypes.json#/definitions/payrollYear"
+                },
+                "PayPeriod": {
+                    "$ref": "#/definitions/ValidPayPeriod"
+                },
+                "payrollNumber": {
+                    "$ref": "uitypes.json#/definitions/payrollNumber"
+                },
+                "payPeriodStartDate": {
+                    "$ref": "uitypes.json#/definitions/payPeriodStartDate"
+                },
+                "payPeriodEndDate": {
+                    "$ref": "uitypes.json#/definitions/payPeriodEndDate"
+                },
+                "payEventCheckDate": {
+                    "$ref": "uitypes.json#/definitions/payEventCheckDate"
+                },
+                "payEventMonthlySequence": {
+                    "attributeDescription": "Sequence number of the pay event within the pay month.",
+                    "masterSystem": "BANPROD",
+                    "masterDataElement": "PAYROLL.PTRCALN.PTRCALN_PAY_OF_MONTH_IND",
+                    "$ref": "uitypes.json#/definitions/sequenceNumber"
+                },
+                "timeEntryStartDate": {
+                    "$ref": "uitypes.json#/definitions/timeEntryStartDate"
+                },
+                "timeEntryEndDate": {
+                    "$ref": "uitypes.json#/definitions/timeEntryEndDate"
+                },
+                "timeEntryCutoffTime": {
+                    "$ref": "uitypes.json#/definitions/timeEntryCutoffTime"
+                },
+                "payPeriodEmployeeWebViewCutoffDate": {
+                    "$ref": "uitypes.json#/definitions/payPeriodEmployeeWebViewCutoffDate"
+                },
+                "payPeriodApproverWevViewCutoffDate": {
+                    "$ref": "uitypes.json#/definitions/payPeriodApproverWevViewCutoffDate"
+                }
+            }
+        },
+        "InstitutionalCredential": {
+            "description": "A person, group or non-person affiliated with the University of Illinois.",
+            "type": "object",
+            "properties": {
+                "credentialType": {
+                    "$ref": "uitypes.json#/definitions/credentialType"
+                },
+                "credentialValue": {
+                    "$ref": "uitypes.json#/definitions/credentialValue"
+                }
+            }
+        },
+        "ValidInstitutionalRole": {
+            "description": "An affiliation role which and Identity may have in relation to the University of Illinois",
+            "type": "object",
+            "properties": {
+                "institutionalRoleCode": {
+                    "$ref": "uitypes.json#/definitions/institutionalRoleCode"
+                },
+                "institutionalRoleDescription": {
+                    "$ref": "uitypes.json#/definitions/institutionalRoleDescription"
+                }
+            }
+        },
+        "ValidFund": {
+            "description": "A finance Fund.",
+            "type": "object",
+            "properties": {
+                "fundCode": {
+                    "$ref": "uitypes.json#/definitions/fundCode"
+                },
+                "fundDescription": {
+                    "$ref": "uitypes.json#/definitions/fundDescription"
+                }
+            }
+        },
+        "ValidAccount": {
+            "description": "A finance Account.",
+            "type": "object",
+            "properties": {
+                "fundCode": {
+                    "$ref": "uitypes.json#/definitions/accountCode"
+                },
+                "fundDescription": {
+                    "$ref": "uitypes.json#/definitions/accountDescription"
+                }
+            }
+        },
+        "ValidProgram": {
+            "description": "A finance Program.",
+            "type": "object",
+            "properties": {
+                "fundCode": {
+                    "$ref": "uitypes.json#/definitions/programCode"
+                },
+                "fundDescription": {
+                    "$ref": "uitypes.json#/definitions/programDescription"
+                }
+            }
+        },
+        "ValidActivity": {
+            "description": "A finance Activity",
+            "type": "object",
+            "properties": {
+                "fundCode": {
+                    "$ref": "uitypes.json#/definitions/activityCode"
+                },
+                "fundDescription": {
+                    "$ref": "uitypes.json#/definitions/activityDescription"
+                }
+            }
+        },
+        "ValidLocation": {
+            "description": "A finance Location",
+            "type": "object",
+            "properties": {
+                "fundCode": {
+                    "$ref": "uitypes.json#/definitions/locationCode"
+                },
+                "fundDescription": {
+                    "$ref": "uitypes.json#/definitions/locationDescription"
+                }
+            }
+        },
+        "ValidAccountingElement": {
+            "description": "One of the several elements in an Accounting String.  Valid types are Fund, Organization, Account, Program, Activity, Location",
+            "type": "object",
+            "properties": {
+                "accountingElementType": {
+                    "$ref": "uitypes.json#/definitions/accountingElementType"
+                },
+                "ChartOfAccounts": {
+                    "$ref": "#/definitions/ValidChartOfAccounts"
+                },
+                "accountingElement": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/definitions/ValidFund"
+                        },
+                        {
+                            "$ref": "#/definitions/AdministrativeOrganization"
+                        },
+                        {
+                            "$ref": "#/definitions/ValidAccount"
+                        },
+                        {
+                            "$ref": "#/definitions/ValidProgram"
+                        },
+                        {
+                            "$ref": "#/definitions/ValidActivity"
+                        },
+                        {
+                            "$ref": "#/definitions/ValidLocation"
+                        }
+                    ]
+                },
+                "activityDate": {
+                    "$ref": "uitypes.json#/definitions/activityDate"
+                },
+                "effectiveDate": {
+                    "$ref": "uitypes.json#/definitions/effectiveDate"
+                },
+                "nextChangeDate": {
+                    "$ref": "uitypes.json#/definitions/nextChangeDate"
+                },
+                "terminateDate": {
+                    "$ref": "uitypes.json#/definitions/terminateDate"
+                },
+                "effectiveStatus": {
+                    "$ref": "uitypes.json#/definitions/effectiveStatus"
+                }
+            }
+        },
+        "EventMetadata": {
+            "description": "Metadata for a data event",
+            "type": "object",
+            "properties": {
+                "eventAction": {
+                    "$ref": "uitypes.json#/definitions/eventAction"
+                },
+                "eventDate": {
+                    "$ref": "uitypes.json#/definitions/eventDate"
+                },
+                "eventId": {
+                    "$ref": "uitypes.json#/definitions/eventId"
+                },
+                "objectName": {
+                    "$ref": "uitypes.json#/definitions/objectName"
+                },
+                "objectVersion": {
+                    "$ref": "uitypes.json#/definitions/objectVersion"
+                },
+                "applicationName": {
+                    "$ref": "uitypes.json#/definitions/applicationName"
+                },
+                "dataStoreName": {
+                    "$ref": "uitypes.json#/definitions/dataStoreName"
+                }
+            }
+        }
+    }
+}
